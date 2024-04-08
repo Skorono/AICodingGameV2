@@ -1,0 +1,11 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/.idea/.idea.AICodingGame/.idea
+/.vs/AICodingGame
+/Game/Library/
+/Game/Logs/
+/Game/Packages/
+/Game/UserSettings/
