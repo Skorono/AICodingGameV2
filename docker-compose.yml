@@ -1,0 +1,18 @@
+﻿services:
+  aicodinggame.webapi:
+    image: aicodinggame.webapi
+    build:
+      context: .
+      dockerfile: AICodingGame.WebAPI/Dockerfile
+    ports:
+      - "443:80"
+  
+  aicodinggame.db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: RobotDatabase
+    ports:
+      - "5432:5432"
