@@ -15,7 +15,7 @@ namespace AICodingGame
             try
             {
                 foreach (var type in dll.GetTypesSafely())
-                    if (typeof(T).IsAssignableFrom(type)) // Пока работает условно верно
+                    if (typeof(T).IsAssignableFrom(type))
                         targetType = type;
             }
             catch (TypeLoadException e)

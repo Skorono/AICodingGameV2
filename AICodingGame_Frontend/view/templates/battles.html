@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    {% for battle in battles %}
+        <div class='card'>
+            <h6>battle.startDateTime</h6>
+            <h6>battle.endDateTime</h6>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                роботы
+            </button>
+            <ul class="dropdown-menu">
+                {% for member in battle.members %}
+                    <h1>member.name</h1>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+
+{% endblock %}

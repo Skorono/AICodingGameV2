@@ -1,6 +1,8 @@
 using System.Collections;
 using API.Source.GameObjects;
+using Unity.Physics;
 using UnityEngine;
+using Math = System.Math;
 
 namespace AICodingGame.API.GameObjects
 {
@@ -31,19 +33,17 @@ namespace AICodingGame.API.GameObjects
             _fsm.PushAction(new RobotStackFSM.RobotTask
             {
                 Work = Rotating,
-                Parameters = new object[] { angle > 0 ? (transform.rotation.eulerAngles.z + angle) % 360 : Mathf.Abs(360 + angle) }
+                Parameters = new object[] { angle > 0 ? (transform.rotation.eulerAngles.z + angle) % 360 : Math.Abs(360 + (angle % 360)) }
             });
         }
 
         private IEnumerator Rotating(object[] objects)
         {
-            if (isRotate && transform.rotation.eulerAngles.z != (float)objects[0])
+            float step = RotationSpeed * Time.deltaTime;
+
+            if (isRotate && _rigidBody2d.rotation != (float)objects[0])
             {
-                transform.rotation = Quaternion.RotateTowards(
-                    transform.rotation,
-                    Quaternion.Euler(0, 0, (float)objects[0]),
-                    Time.fixedDeltaTime * RotationSpeed);
-                yield return new WaitForFixedUpdate();
+                _rigidBody2d.MoveRotation( _rigidBody2d.rotation + step);
             }
             else
             {

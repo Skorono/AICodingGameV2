@@ -31,7 +31,7 @@ namespace API.Source.GameObjects
             _fsm.PushAction(new RobotStackFSM.RobotTask
             {
                 Work = Moving,
-                Parameters = new object[] { destinationPoint, (float)speed }
+                Parameters = new object[] { destinationPoint, (float)speed, direction }
             });
 
             /*while (transform.position != destinationPoint)
@@ -42,13 +42,14 @@ namespace API.Source.GameObjects
         {
             Vector2 targetPosition = (Vector3)parameters[0];
             var speed = (float)parameters[1];
+            var direction = (int)parameters[2];
 
             if (IsMoving &&
-                transform.position != new Vector3(targetPosition.x, targetPosition.y, transform.position.z))
+                _rigidBody2d.position != targetPosition)
             {
-                _rigidBody2d.position = Vector2.MoveTowards(transform.position, targetPosition,
-                    speed / 10 * Time.deltaTime);
-                yield return new WaitForFixedUpdate();
+                _rigidBody2d.velocity = Vector2.up * (direction * (speed * Time.deltaTime));
+                //_rigidBody2d.angularVelocity = 0;
+                yield return null;
             }
 
             else

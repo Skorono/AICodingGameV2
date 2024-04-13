@@ -12,8 +12,6 @@ namespace AICodingGame.API
     /// </summary>
     public abstract class BasicRobot : Robot
     {
-        private Rigidbody2D _rigidbody;
-
         private RobotGun _robotGun;
         private RobotScanner _scanner;
         public GameObject BulletPrefab;
@@ -22,11 +20,15 @@ namespace AICodingGame.API
         {
             gameObject.AddComponent(typeof(RobotStackFSM));
             _fsm = gameObject.GetComponent<RobotStackFSM>();
-            _fsm.PushAction(new RobotStackFSM.RobotTask
+
+            RobotStackFSM.RobotTask task = new RobotStackFSM.RobotTask
             {
                 Work = _Run
-            });
-            _rigidbody = GetComponent<Rigidbody2D>();
+            };
+            task.Parameters = new object[]{ task };
+            
+            _fsm.PushAction(task);
+            _rigidBody2d = GetComponent<Rigidbody2D>();
         }
 
         private void Start()
@@ -38,13 +40,13 @@ namespace AICodingGame.API
 
             _scanner = transform.Find("RobotBody").Find("Radar").GetComponent<RobotScanner>();
             _scanner.OnObjectDetected += OnScanDetectObject;
-            _rigidbody.inertia = 0;
+            _rigidBody2d.inertia = 0;
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.angularVelocity = 0;
+            _rigidBody2d.velocity = Vector3.zero;
+            _rigidBody2d.angularVelocity = 0;
             Energy -= 10;
 
             switch (other.gameObject.tag)
@@ -73,7 +75,7 @@ namespace AICodingGame.API
         private IEnumerator _Run(object[] parameters = null)
         {
             Run();
-            _fsm.GetTopAction().IsEnded = true;
+            ((RobotStackFSM.RobotTask)parameters[0]).IsEnded = true;
             yield return null;
         }
 

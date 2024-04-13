@@ -1,6 +1,6 @@
-@AICodingGame.WebAPI_HostAddress = http://localhost:5030
+@AICodingGame.WebAPI_HostAddress = http://localhost:443
 
-GET {{AICodingGame.WebAPI_HostAddress}}/weatherforecast/
+GET {{AICodingGame.WebAPI_HostAddress}}/api/Robot/getRobots
 Accept: application/json
 
 ###
