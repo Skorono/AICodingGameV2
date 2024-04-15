@@ -14,3 +14,6 @@ def robotsView(request):
 def battlesView(request):
     battles = json.loads(r.get(f"{BASE_URL}/api/Battle/getBattles").content)
     return render(request, 'battles.html', {'battles': battles})
+
+def docsView(request):
+    return render(request, 'docs.html')

@@ -18,7 +18,7 @@ public class BattleController: ControllerBase
     [HttpGet("getBattles")]
     public IEnumerable<Battle>? GetBattles() => _service.Get();
 
-    [HttpGet]
+    [HttpGet("getBattleMembers")]
     public IEnumerable<BattleMember>? GetBattleMembers(int battleId)
     {
         var res = _service.GetMembers(battleId);

@@ -14,6 +14,9 @@ public class RobotController: ControllerBase
     {
         _service = service;
     }
+    
+    [HttpGet("getRobotById")]
+    public Robot? GetRobotById(int robotId) => _service.GetById(robotId);
 
     [HttpGet("getRobots")]
     public IEnumerable<Robot>? Get() => _service.Get();
@@ -21,4 +24,7 @@ public class RobotController: ControllerBase
     [HttpGet("getBattlesStatistic")]
     public IEnumerable<MemberBattleStatistic> GetBattlesStatistic(int robotId) =>
         _service.GetById(robotId)?.BattleMembers.Select(m => m.Statistic)!;
+
+    [HttpGet("getRobotStatistic")]
+    public Statistic? GetRobotStatistic(int robotId) => GetRobotById(robotId)?.Statistic;
 }

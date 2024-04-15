@@ -6,5 +6,5 @@ urlpatterns = [
     path('', views.mainPage),
     path('robots', views.robotsView),
     path('battles', views.battlesView),
-    path('docs', views.mainPage)
+    path('docs', views.docsView)
 ]

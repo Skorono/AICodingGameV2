@@ -1,11 +1,65 @@
 {% extends 'index.html' %}
+{% load static %}
+
+{% block styles %}
+    .robot-logo{
+        width: 50%;
+        height: 65%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-content{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card{
+        margin-top: 2%;
+    }
+{% endblock %}
+
 
 {% block content %}
-
     {% for robot in robots %}
-        <div class="card">
-            <h1>{{ robot.name }}</h1>
+        <div class="card" style="width: 18rem">
+            <img class="robot-logo" src="{% static './images/robotSprite.png' %}"  class="card-img-top" />
+            <div class=card-body"">
+                <div class="list-group list-group-flush">
+                    <p class="list-group-item active">{{ robot.name }}</p>
+                    
+                    <div class="list-group-item btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            сражения
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for battle in robot.battle %}
+                                <h1>{{ battle.id }}</h1>
+                            {% empty %}
+                                <p class=".text-color-secondary">Этот робот пока ещё не участвовал в боях...</p>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    <div class="list-group-item btn-group">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            статистика
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for stat in robot.statistic %}
+                                <p>{{ stat.winnerPercent }}</p>
+                                <p>{{ stat.killDeathPercent }}</p>
+                            {% empty %}
+                                <p class=".text-color-secondary">Недостаточно информации</p>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
+    {% empty %}
+        <p class=".text-dark-emphasis">Здесь пока ничего нет...</p>
     {% endfor %}
-
 {% endblock %}

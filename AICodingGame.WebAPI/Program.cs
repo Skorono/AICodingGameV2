@@ -31,7 +31,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(act => act.RoutePrefix = "");
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
