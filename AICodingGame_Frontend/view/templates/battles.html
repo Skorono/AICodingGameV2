@@ -1,25 +1,54 @@
 {% extends 'index.html' %}
 
-{% block content %}
+{% block styles %}
+    .card{
+        margin: 2% auto;
+    }
 
+    .text-color-secondary {
+        color: #888; 
+    }
+{% endblock %}
+
+{% block content %}
     {% for battle in battles %}
-        <div class='card'>
-            <div class="btn-group">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    роботы
-                </button>
-                <ul class="dropdown-menu">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title">Battle {{ battle.id }}</h5>
+            </div>
+
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Участники:</h6>
+                <ul class="list-group">
                     {% for member in battle.members %}
-                        <h1>{{ member.robot.name }}</h1>
+                        <li class="list-group-item">{{ member.robot.name }}</li>
                     {% endfor %}
                 </ul>
+                <h6 class="card-subtitle mt-3 mb-2 text-muted">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="margin-bottom: 3px" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                        <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z"/>
+                        <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
+                    </svg> Длительность сражения:</h6>
+                <p class="card-text">{{ battle.startDateTime|timesince:battle.endDateTime }}</p>
+
+                <h6 class="card-subtitle mt-3 mb-2 text-muted">Статистика:</h6>
+                <div style="overflow-x: auto" class="row">
+                    {% for member in battle.members %}
+                        <div class="col-md-6">
+                            <h6 style="font-weight: bold">{{ member.robot.name }}</h6>
+                            <p>Время жизни: {{ member.statistic.lifeTime }}</p>
+                            <p>Точность: {{ member.statistic.accuracyPercent }}%</p>
+                            <p>Убийств: {{ member.statistic.kills }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="text-color-secondary">Недостаточно информации</p>
+                    {% endfor %}
+                </div>
             </div>
-            
-            <h6>{{ battle.startDateTime }}</h6>
-            <h6>{{ battle.endDateTime }}</h6>
         </div>
         {% empty %}
             <p class=".text-dark-emphasis">Здесь пока ничего нет...</p>
     {% endfor %}
+
 
 {% endblock %}

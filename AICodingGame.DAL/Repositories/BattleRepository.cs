@@ -11,8 +11,7 @@ public class BattleRepository: Repository<Battle>, IBattleRepository
     }
 
     public IEnumerable<BattleMember>? GetMembers(int battleId) =>
-        _dbSet.Include(b => b.Members)
-            .FirstOrDefault(b => b.Id == battleId)?.Members;
+        Get()?.FirstOrDefault(b => b.Id == battleId)?.Members;
 
     public IEnumerable<MemberBattleStatistic>? GetMembersStatistic(int battleId) =>
         new MemberBattleStatistic[2]; /*GetById(battleId)?.Members.Select(m => m.Statistic).ToList();*/
@@ -21,6 +20,9 @@ public class BattleRepository: Repository<Battle>, IBattleRepository
     {
         return _dbSet
             .Include(b => b.Members)
+                .ThenInclude(m => m.Statistic)
+            .Include(b => b.Members)
+                .ThenInclude(m => m.Robot)
             .AsNoTracking()
             .ToList();
     }

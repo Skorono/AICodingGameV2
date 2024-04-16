@@ -2,64 +2,108 @@
 {% load static %}
 
 {% block styles %}
-    .robot-logo{
-        width: 50%;
-        height: 65%;
-        margin-left: auto;
-        margin-right: auto;
+    .robot-logo {
+        width: 75%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
     }
-
+    
+    .card {
+        margin: 2% auto; 
+        max-width: 300px; 
+        border: 1px solid #ccc;
+        border-radius: 10px; 
+        overflow: hidden; 
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .card-body {
+        padding: 20px; 
+    }
+    
+    .list-group-item {
+        border: none; 
+    }
+    
+    .dropdown-menu {
+        min-width: 200px;
+        padding: 10px; 
+    }
+    
+    .text-color-secondary {
+        color: #888;
+    }
+    
+    .btn-secondary {
+        background-color: transparent;
+        color: #333; 
+        border-color: #333;
+        font-family: Arial, sans-serif;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #333;
+        color: #fff;
+    }
+    
+    
     .main-content{
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .card{
-        margin-top: 2%;
     }
 {% endblock %}
 
 
 {% block content %}
+<div class="main-content">
     {% for robot in robots %}
-        <div class="card" style="width: 18rem">
-            <img class="robot-logo" src="{% static './images/robotSprite.png' %}"  class="card-img-top" />
-            <div class=card-body"">
-                <div class="list-group list-group-flush">
-                    <p class="list-group-item active">{{ robot.name }}</p>
-                    
-                    <div class="list-group-item btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            сражения
-                        </button>
-                        <ul class="dropdown-menu">
-                            {% for battle in robot.battle %}
-                                <h1>{{ battle.id }}</h1>
-                            {% empty %}
-                                <p class=".text-color-secondary">Этот робот пока ещё не участвовал в боях...</p>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                    
-                    <div class="list-group-item btn-group">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            статистика
-                        </button>
-                        <ul class="dropdown-menu">
-                            {% for stat in robot.statistic %}
-                                <p>{{ stat.winnerPercent }}</p>
-                                <p>{{ stat.killDeathPercent }}</p>
-                            {% empty %}
-                                <p class=".text-color-secondary">Недостаточно информации</p>
-                            {% endfor %}
-                        </ul>
-                    </div>
+    <div class="card">
+        <img class="robot-logo" src="{% static './images/robotSprite.png' %}" alt="Robot Logo">
+        <div class="card-body">
+            <h5 class="card-title">{{ robot.name }}</h5>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Сражения
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for battle in robot.battleMembers %}
+                            <li>{{ battle.id }}</li>
+                            <li>{{ battle.battle.startDateTime }}</li>
+                            <li>{{ battle.battle.endDateTime }}</li>
+                        {% empty %}
+                            <li class="text-color-secondary">Этот робот пока ещё не участвовал в боях...</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="list-group-item btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Статистика
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for stat in robot.statistic %}
+                            <li>Побед: {{ stat.winnerPercent }}</li>
+                            <li>Убийство/Смерть: {{ stat.killDeathPercent }}</li>
+                        {% empty %}
+                            <li class="text-color-secondary">Недостаточно информации</li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
+    </div>
     {% empty %}
-        <p class=".text-dark-emphasis">Здесь пока ничего нет...</p>
+        <p class="text-dark-emphasis">Здесь пока ничего нет...</p>
     {% endfor %}
+</div>
 {% endblock %}

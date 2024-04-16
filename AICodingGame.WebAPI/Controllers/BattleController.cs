@@ -15,13 +15,23 @@ public class BattleController: ControllerBase
         _service = service;
     }
 
-    [HttpGet("getBattles")]
-    public IEnumerable<Battle>? GetBattles() => _service.Get();
+    [HttpGet("get")]
+    public async Task<IEnumerable<Battle>?> Get() => 
+        await Task.Run(() => _service.Get());
 
-    [HttpGet("getBattleMembers")]
-    public IEnumerable<BattleMember>? GetBattleMembers(int battleId)
-    {
-        var res = _service.GetMembers(battleId);
-        return res;
-    }
+    [HttpGet("getMembers")]
+    public async Task<IEnumerable<BattleMember>?> GetMembers(int battleId) => 
+        await Task.Run(() => _service.GetMembers(battleId));
+
+    [HttpPost("add")]
+    public async void Add(Battle battle) => 
+        await Task.Run(() => _service.Add(battle));
+    
+    [HttpPost("update")]
+    public async void Update(Battle battle) => 
+        await Task.Run(() => _service.Update(battle));
+
+    [HttpDelete("delete")]
+    public async void Delete(Battle battle) =>
+        await Task.Run(() => _service.Remove(battle));
 }
