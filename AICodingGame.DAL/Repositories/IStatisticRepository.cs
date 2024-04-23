@@ -2,7 +2,6 @@
 
 namespace AICodingGame.DAL.Repositories;
 
-public interface IStatisticRepository: IRepository<Statistic>
+public interface IStatisticRepository : IRepository<Statistic>
 {
-    
 }

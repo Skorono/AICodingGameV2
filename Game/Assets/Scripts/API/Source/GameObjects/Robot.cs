@@ -11,17 +11,17 @@ namespace AICodingGame.API
 
         [Serialize] public float Energy { get; protected set; } = 100;
 
+        private void Update()
+        {
+            if (HP <= 0 || Energy <= 0)
+                gameObject.SetActive(false);
+        }
+
         public abstract void OnHitByBullet(BulletHit hit);
         public abstract void OnHitByRobot(RobotHit hit);
         public abstract void OnHitWall(WallHit hit);
         public abstract void OnEnemyDetect(RobotInfo info);
         public abstract void OnWallDetect();
         public abstract void Run();
-
-        private void Update()
-        {
-            if (HP <= 0 || Energy <= 0)
-                gameObject.SetActive(false);
-        }
     }
 }

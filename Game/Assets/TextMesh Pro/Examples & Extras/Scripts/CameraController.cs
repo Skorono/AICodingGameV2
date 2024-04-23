@@ -22,12 +22,6 @@ namespace TMPro.Examples
 
         public Transform CameraTarget;
 
-        private Transform cameraTransform;
-
-        private Vector3 currentVelocity = Vector3.zero;
-        private Vector3 desiredPosition;
-        private Transform dummyTarget;
-
         public float ElevationAngle = 30.0f;
 
         public float FollowDistance = 30.0f;
@@ -35,21 +29,27 @@ namespace TMPro.Examples
         public float MaxFollowDistance = 100.0f;
         public float MinElevationAngle;
         public float MinFollowDistance = 2.0f;
-        private float mouseWheel;
-        private float mouseX;
-        private float mouseY;
 
         public bool MovementSmoothing = true;
 
         public float MovementSmoothingValue = 25f;
 
         public float MoveSensitivity = 2.0f;
-        private Vector3 moveVector;
 
         public float OrbitalAngle;
-        private bool previousSmoothing;
         public bool RotationSmoothing;
         public float RotationSmoothingValue = 5.0f;
+
+        private Transform cameraTransform;
+
+        private Vector3 currentVelocity = Vector3.zero;
+        private Vector3 desiredPosition;
+        private Transform dummyTarget;
+        private float mouseWheel;
+        private float mouseX;
+        private float mouseY;
+        private Vector3 moveVector;
+        private bool previousSmoothing;
 
 
         private void Awake()

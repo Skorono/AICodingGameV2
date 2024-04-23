@@ -4,8 +4,8 @@ namespace TMPro.Examples
 {
     public class TMP_TextEventCheck : MonoBehaviour
     {
-        private TMP_Text m_TextComponent;
         public TMP_TextEventHandler TextEventHandler;
+        private TMP_Text m_TextComponent;
 
         private void OnEnable()
         {

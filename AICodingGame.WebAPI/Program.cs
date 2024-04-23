@@ -2,6 +2,7 @@ using AICodingGame.Core.Services;
 using AICodingGame.DAL.Context;
 using AICodingGame.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,12 +12,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<GameContext>(options => 
+builder.Services.AddDbContext<GameContext>(options =>
     options.UseNpgsql(builder.Configuration["DefaultConnection"]));
 
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>
-        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore
     );
 
 builder.Services.AddScoped<IRobotRepository, RobotRepository>();

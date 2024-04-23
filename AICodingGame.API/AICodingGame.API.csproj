@@ -1,23 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <BaseOutputPath>C:\Users\astat\RiderProjects\AICodingGame\Assets\Scripts\Api</BaseOutputPath>
-    <RootNamespace>AICodingGame.API</RootNamespace>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <BaseOutputPath>C:\Users\astat\RiderProjects\AICodingGame\Assets\Scripts\Api</BaseOutputPath>
+        <RootNamespace>AICodingGame.API</RootNamespace>
+    </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <OutputPath>C:\Users\astat\RiderProjects\AICodingGame\Assets\Scripts\API\</OutputPath>
-  </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <OutputPath>C:\Users\astat\RiderProjects\AICodingGame\Assets\Scripts\API\</OutputPath>
+    </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <OutputPath>C:\Users\astat\RiderProjects\AICodingGame\Assets\Scripts\API\</OutputPath>
-  </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+        <OutputPath>C:\Users\astat\RiderProjects\AICodingGame\Assets\Scripts\API\</OutputPath>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>E:\Unity\Editor\2022.3.13f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+    <ItemGroup>
+        <Reference Include="UnityEngine">
+            <HintPath>E:\Unity\Editor\2022.3.13f1\Editor\Data\Managed\UnityEngine.dll</HintPath>
+        </Reference>
+    </ItemGroup>
 
 </Project>

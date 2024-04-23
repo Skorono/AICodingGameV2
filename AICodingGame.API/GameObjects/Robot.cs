@@ -1,13 +1,15 @@
 using AICodingGame.API.GameObjects;
-using UnityEngine;
 
 namespace AICodingGame.API
 {
-    public class Robot: Rotator2D, IRobot
+    public class Robot : Rotator2D, IRobot
     {
+        public enum MoveDirection
+        {
+            Forward = 1,
+            Back = -1
+        }
 
-        public float Energy { get; protected set; } = 100;
-            
         public enum MoveSpeed
         {
             Low = 15,
@@ -15,12 +17,8 @@ namespace AICodingGame.API
             High = 25
         }
 
-        public enum MoveDirection
-        {
-            Forward = 1,
-            Back = -1
-        }
-        
+        public float Energy { get; protected set; } = 100;
+
         public virtual void OnHitByBullet()
         {
         }

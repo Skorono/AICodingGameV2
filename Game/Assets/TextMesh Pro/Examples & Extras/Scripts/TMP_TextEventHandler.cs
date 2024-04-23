@@ -7,18 +7,6 @@ namespace TMPro
 {
     public class TMP_TextEventHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
-        private Camera m_Camera;
-        private Canvas m_Canvas;
-        private int m_lastCharIndex = -1;
-        private int m_lastLineIndex = -1;
-        private int m_lastWordIndex = -1;
-
-        private int m_selectedLink = -1;
-
-
-        private TMP_Text m_TextComponent;
-
-
         /// <summary>
         ///     Event delegate triggered when pointer is over a character.
         /// </summary>
@@ -53,17 +41,16 @@ namespace TMPro
         [field: SerializeField]
         public LinkSelectionEvent onLinkSelection { get; set; } = new();
 
+        private Camera m_Camera;
+        private Canvas m_Canvas;
+        private int m_lastCharIndex = -1;
+        private int m_lastLineIndex = -1;
+        private int m_lastWordIndex = -1;
 
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            //Debug.Log("OnPointerEnter()");
-        }
+        private int m_selectedLink = -1;
 
 
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            //Debug.Log("OnPointerExit()");
-        }
+        private TMP_Text m_TextComponent;
 
         private void Awake()
         {
@@ -185,6 +172,18 @@ namespace TMPro
                 m_lastWordIndex = -1;
                 m_lastLineIndex = -1;
             }
+        }
+
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            //Debug.Log("OnPointerEnter()");
+        }
+
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            //Debug.Log("OnPointerExit()");
         }
 
 

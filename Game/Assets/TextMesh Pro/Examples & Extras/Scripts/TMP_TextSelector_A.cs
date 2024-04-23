@@ -13,20 +13,6 @@ namespace TMPro.Examples
         private int m_selectedLink = -1;
         private TextMeshPro m_TextMeshPro;
 
-
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            Debug.Log("OnPointerEnter()");
-            m_isHoveringObject = true;
-        }
-
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            Debug.Log("OnPointerExit()");
-            m_isHoveringObject = false;
-        }
-
         private void Awake()
         {
             m_TextMeshPro = gameObject.GetComponent<TextMeshPro>();
@@ -156,6 +142,20 @@ namespace TMPro.Examples
 
                 #endregion
             }
+        }
+
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            Debug.Log("OnPointerEnter()");
+            m_isHoveringObject = true;
+        }
+
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            Debug.Log("OnPointerExit()");
+            m_isHoveringObject = false;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace AICodingGame.DAL.Repositories;
 
-public interface IBattleRepository: IRepository<Battle>
+public interface IBattleRepository : IRepository<Battle>
 {
     public IEnumerable<BattleMember>? GetMembers(int battleId);
 

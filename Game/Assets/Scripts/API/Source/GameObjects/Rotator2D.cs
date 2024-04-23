@@ -1,6 +1,5 @@
 using System.Collections;
 using API.Source.GameObjects;
-using Unity.Physics;
 using UnityEngine;
 using Math = System.Math;
 
@@ -9,9 +8,8 @@ namespace AICodingGame.API.GameObjects
     [RequireComponent(typeof(Rigidbody2D))]
     public class Rotator2D : StackedWorker
     {
-        protected Rigidbody2D _rigidBody2d;
-
         [SerializeField] protected float RotationSpeed;
+        protected Rigidbody2D _rigidBody2d;
 
         public bool isRotate { private set; get; }
 
@@ -33,17 +31,18 @@ namespace AICodingGame.API.GameObjects
             _fsm.PushAction(new RobotStackFSM.RobotTask
             {
                 Work = Rotating,
-                Parameters = new object[] { angle > 0 ? (transform.rotation.eulerAngles.z + angle) % 360 : Math.Abs(360 + (angle % 360)) }
+                Parameters = new object[]
+                    { angle > 0 ? (transform.rotation.eulerAngles.z + angle) % 360 : Math.Abs(360 + angle % 360) }
             });
         }
 
         private IEnumerator Rotating(object[] objects)
         {
-            float step = RotationSpeed * Time.deltaTime;
+            var step = RotationSpeed * Time.deltaTime;
 
             if (isRotate && _rigidBody2d.rotation != (float)objects[0])
             {
-                _rigidBody2d.MoveRotation( _rigidBody2d.rotation + step);
+                _rigidBody2d.MoveRotation(_rigidBody2d.rotation + step);
             }
             else
             {

@@ -4,11 +4,11 @@ namespace TMPro.Examples
 {
     public class TextMeshSpawner : MonoBehaviour
     {
-        private TextMeshProFloatingText floatingText_Script;
         public int NumberOfNPC = 12;
         public int SpawnType;
 
         public Font TheFont;
+        private TextMeshProFloatingText floatingText_Script;
 
         private void Awake()
         {

@@ -11,10 +11,10 @@ public class TestObserver : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject BulletPrefab;
+    public GameObject Spawner;
     public Action OnTurnEnd;
 
     public Action OnTurnStart;
-    public GameObject Spawner;
 
     private void Start()
     {

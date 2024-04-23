@@ -8,10 +8,10 @@ namespace TMPro.Examples
     {
         public float AngleMultiplier = 1.0f;
         public float CurveScale = 1.0f;
+        public float SpeedMultiplier = 1.0f;
         private bool hasTextChanged;
 
         private TMP_Text m_TextComponent;
-        public float SpeedMultiplier = 1.0f;
 
 
         private void Awake()

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using AICodingGame.API;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,13 +12,13 @@ namespace AICodingGame
     public class BattleObserver : MonoBehaviour
     {
         private static int _turnsCompleted;
+        [SerializeField] private GameObject bulletPrefab;
+
+        [SerializeField] private GameObject robotPrefab;
 
         private readonly DllRobotFactory _robotFactory = new();
 
         private readonly List<BasicRobot> _robots = new();
-        [SerializeField] private GameObject bulletPrefab;
-
-        [SerializeField] private GameObject robotPrefab;
 
         private void Awake()
         {
@@ -34,23 +32,24 @@ namespace AICodingGame
             var robotContainer = GameObject.FindGameObjectWithTag(ObjectsTags.RobotNamesList).gameObject
                 .GetComponent<ScrollRect>();
 
-            for (var i = 0; i < robotContainer.content.childCount; i++)
+            foreach (var robot in battleSettings.RobotList)
             {
-                var robotPath = Path.Combine(battleSettings.RobotDir,
-                    $"{robotContainer.content.GetChild(i).GetComponentInChildren<TextMeshProUGUI>().text}.dll");
-
-                var robotObj = _robotFactory.Make(robotPath);
-                robotObj.transform.SetParent(GameObject.FindGameObjectWithTag(ObjectsTags.Spawner).transform);
-                robotObj.transform.position = new Vector3(new Random().NextInt(-7, 8), new Random().NextInt(-4, 4), -1);
-
-                var robot = (BasicRobot)robotObj.GetComponent(DllLoader.LoadTypeFromDll<BasicRobot>(robotPath));
-
-                if (robot != null)
+                var robotPath = DllSearcher.FindDll(robot.ProjectPath, robot.Name);
+                if (robotPath != null)
                 {
-                    robot.BulletPrefab = bulletPrefab;
-                    OnTurnStart += robot.Execute;
-                    OnTurnEnd += robot.OnScan;
-                    _robots.Add(robot);
+                    var robotObj = _robotFactory.Make(robotPath);
+                    robotObj.transform.SetParent(GameObject.FindGameObjectWithTag(ObjectsTags.Spawner).transform);
+                    robotObj.transform.position =
+                        new Vector3(new Random().NextInt(-7, 8), new Random().NextInt(-4, 4), -1);
+
+                    _robots.Add( (BasicRobot)robotObj.GetComponent(DllLoader.LoadTypeFromDll<BasicRobot>(robotPath)));
+
+                    if (_robots.Last() != null)
+                    {
+                        _robots.Last().BulletPrefab = bulletPrefab;
+                        OnTurnStart += _robots.Last().Execute;
+                        OnTurnEnd += _robots.Last().OnScan;
+                    }
                 }
             }
         }

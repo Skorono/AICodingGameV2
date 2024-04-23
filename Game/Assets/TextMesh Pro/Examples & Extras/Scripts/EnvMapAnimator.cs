@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class EnvMapAnimator : MonoBehaviour
 {
+    //private Vector3 TranslationSpeeds;
+    public Vector3 RotationSpeeds;
     private Material m_material;
 
     private TMP_Text m_textMeshPro;
-
-    //private Vector3 TranslationSpeeds;
-    public Vector3 RotationSpeeds;
 
 
     private void Awake()

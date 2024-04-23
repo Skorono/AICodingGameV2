@@ -4,11 +4,10 @@ namespace TMPro.Examples
 {
     public class Benchmark02 : MonoBehaviour
     {
-        private TextMeshProFloatingText floatingText_Script;
-
         public bool IsTextObjectScaleStatic;
         public int NumberOfNPC = 12;
         public int SpawnType;
+        private TextMeshProFloatingText floatingText_Script;
 
 
         private void Start()

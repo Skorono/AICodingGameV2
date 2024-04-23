@@ -1,5 +1,5 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +23,7 @@ public class RobotList : MonoBehaviour
         newRobotLabel.GetComponent<Button>().onClick.AddListener(() =>
         {
             SelectedItem = newRobotLabel;
-            Debug.Log($"Был выбран робот: \"{name}\"");
+            Debug.Log($"пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ: \"{name}\"");
         });
         newRobotLabel.GetComponentInChildren<TextMeshProUGUI>().text = name;
         newRobotLabel.transform.SetParent(ScrollRect.content, false);

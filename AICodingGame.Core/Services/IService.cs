@@ -1,6 +1,4 @@
-﻿using AICodingGame.DAL.Repositories;
-
-namespace AICodingGame.Core.Services;
+﻿namespace AICodingGame.Core.Services;
 
 public interface IService<TRepository>
 {

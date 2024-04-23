@@ -108,7 +108,7 @@ namespace TMPro.Examples
         {
             if (BenchmarkType == 0)
             {
-                m_textMeshPro.text = (m_frame % 1000).ToString();            
+                m_textMeshPro.text = (m_frame % 1000).ToString();
             }
             else if (BenchmarkType == 1)
             {

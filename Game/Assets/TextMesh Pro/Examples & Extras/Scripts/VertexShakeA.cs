@@ -6,12 +6,12 @@ namespace TMPro.Examples
     public class VertexShakeA : MonoBehaviour
     {
         public float AngleMultiplier = 1.0f;
-        private bool hasTextChanged;
-
-        private TMP_Text m_TextComponent;
         public float RotationMultiplier = 1.0f;
         public float ScaleMultiplier = 1.0f;
         public float SpeedMultiplier = 1.0f;
+        private bool hasTextChanged;
+
+        private TMP_Text m_TextComponent;
 
 
         private void Awake()

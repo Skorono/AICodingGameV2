@@ -2,6 +2,8 @@
 WORKDIR /app
 EXPOSE 80
 
+ENV ASPNETCORE_ENVIRONMENT=Development
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 COPY ["AICodingGame.WebAPI/AICodingGame.WebAPI.csproj", "AICodingGame.WebAPI/"]

@@ -9,6 +9,9 @@ namespace TMPro.Examples
         private const string label02 = "The <color=#0050FF>count is: </color>";
 
         public int BenchmarkType;
+        public Font TextMeshFont;
+
+        public TMP_FontAsset TMProFont;
 
         //private string m_string;
         //private int m_frame;
@@ -19,9 +22,6 @@ namespace TMPro.Examples
         private TextMesh m_textMesh;
 
         private TextMeshPro m_textMeshPro;
-        public Font TextMeshFont;
-
-        public TMP_FontAsset TMProFont;
 
 
         private IEnumerator Start()

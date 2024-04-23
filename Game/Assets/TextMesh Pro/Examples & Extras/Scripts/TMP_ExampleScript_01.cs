@@ -14,12 +14,12 @@ namespace TMPro.Examples
 
 
         private const string k_label = "The count is <#0080ff>{0}</color>";
-        private int count;
         public bool isStatic;
 
-        private TMP_Text m_text;
-
         public objectType ObjectType;
+        private int count;
+
+        private TMP_Text m_text;
 
         private void Awake()
         {

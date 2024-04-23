@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AICodingGame.WebAPI", "AICo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Game\Assembly-CSharp.csproj", "{8FC1FBDD-9693-3731-9CFE-DEB2CDB74636}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AICodingGame.Infrastructure", "AICodingGame.Infrastructure\AICodingGame.Infrastructure.csproj", "{8D143CE5-F514-4016-8832-DFCD2743D567}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,8 @@ Global
 		{0D3BDEED-224F-4976-B6A0-9A62CA1F87B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FC1FBDD-9693-3731-9CFE-DEB2CDB74636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8FC1FBDD-9693-3731-9CFE-DEB2CDB74636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D143CE5-F514-4016-8832-DFCD2743D567}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D143CE5-F514-4016-8832-DFCD2743D567}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

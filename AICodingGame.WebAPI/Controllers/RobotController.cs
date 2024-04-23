@@ -1,32 +1,44 @@
-﻿using System.Net.Sockets;
+﻿using System.Runtime.Serialization;
+using AICodingGame.Core.Helpers;
 using AICodingGame.Core.Services;
 using AICodingGame.DAL.Models;
+using AICodingGame.Infrastructure.Services.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace AICodingGame.WebAPI.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class RobotController: ControllerBase
+public class RobotController : ControllerBase
 {
-    private RobotService _service;
-    
-    public RobotController(RobotService service)
+    private readonly RobotService _service;
+    private readonly ILogger<RobotController> _logger;
+
+    public RobotController(RobotService service, ILogger<RobotController> logger)
     {
         _service = service;
+        _logger = logger;
     }
-    
+
     [HttpGet("getById")]
-    public async Task<Robot?> GetRobotById(int robotId) => 
-        await Task.Run(() => _service.GetById(robotId));
+    public async Task<Robot?> GetRobotById(int robotId)
+    {
+        return await Task.Run(() => _service.GetById(robotId));
+    }
 
     [HttpGet("get")]
-    public async Task<IEnumerable<Robot>?> Get() =>
-        await Task.Run(() => _service.Get());
+    public async Task<IEnumerable<Robot>?> Get()
+    {
+        return await Task.Run(() => _service.Get());
+    }
 
     [HttpGet("getBattleStatistic")]
-    public async Task<IEnumerable<MemberBattleStatistic>> GetBattlesStatistic(int robotId) =>
-        await Task.Run(() => _service.GetById(robotId)?.BattleMembers.Select(m => m.Statistic)!);
+    public async Task<IEnumerable<MemberBattleStatistic>> GetBattlesStatistic(int robotId)
+    {
+        return await Task.Run(() => _service.GetById(robotId)?.BattleMembers.Select(m => m.Statistic)!);
+    }
 
     [HttpGet("getStatistic")]
     public async Task<Statistic?> GetRobotStatistic(int robotId)
@@ -36,14 +48,24 @@ public class RobotController: ControllerBase
     }
 
     [HttpPost("add")]
-    public async void Add(Robot robot) =>
+    public async void Add(RobotDto robotDto)
+    {
+        Robot robot = robotDto.RobotDtoToModel();
+        _logger.LogInformation($"adding robot {JsonSerializer.Serialize(robotDto)}");
         await Task.Run(() => _service.Add(robot));
+    }
 
     [HttpPost("update")]
-    public async void Update(Robot robot) =>
-        await Task.Run(() => _service.Update(robot));
+    public async void Update(RobotDto robot)
+    {
+        _logger.LogInformation($"updating robot {robot.ToString()}");
+        await Task.Run(() => _service.Update(robot.RobotDtoToModel()));
+    }
 
     [HttpDelete("delete")]
-    public async void Delete(Robot robot) =>
-        await Task.Run(() => _service.Remove(robot));
+    public async void Delete(RobotDto robot)
+    {
+        _logger.LogInformation($"deleting robot {robot.ToString()}");
+        await Task.Run(() => _service.Remove(robot.RobotDtoToModel()));
+    }
 }

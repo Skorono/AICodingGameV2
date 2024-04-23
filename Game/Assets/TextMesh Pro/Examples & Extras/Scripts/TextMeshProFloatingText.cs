@@ -19,6 +19,10 @@ namespace TMPro.Examples
 
         public bool IsTextObjectScaleStatic;
 
+        public int SpawnType;
+
+        public Font TheFont;
+
         private Vector3 lastPOS = Vector3.zero;
         private Quaternion lastRotation = Quaternion.identity;
         private Transform m_cameraTransform;
@@ -29,10 +33,6 @@ namespace TMPro.Examples
         private TextMeshPro m_textMeshPro;
 
         private Transform m_transform;
-
-        public int SpawnType;
-
-        public Font TheFont;
 
         private void Awake()
         {

@@ -15,6 +15,7 @@ namespace TMPro.Examples
         private const string fpsLabel = "{0:2}</color> <#8080ff>FPS \n<#FF8000>{1:2} <#8080ff>MS";
 
         public FpsCounterAnchorPositions AnchorPosition = FpsCounterAnchorPositions.TopRight;
+        public float UpdateInterval = 5.0f;
 
         private string htmlColorTag;
 
@@ -25,7 +26,6 @@ namespace TMPro.Examples
         private float m_LastInterval;
 
         private TextMeshPro m_TextMeshPro;
-        public float UpdateInterval = 5.0f;
 
         private void Awake()
         {

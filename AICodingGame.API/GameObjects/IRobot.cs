@@ -1,6 +1,5 @@
 ﻿namespace AICodingGame.API
 {
-
     public interface IRobot
     {
         void OnHitByBullet();

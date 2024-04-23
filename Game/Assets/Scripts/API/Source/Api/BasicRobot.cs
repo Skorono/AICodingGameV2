@@ -1,7 +1,7 @@
-﻿using AICodingGame.API.Data.EventInfo.Hit;
+﻿using System.Collections;
+using AICodingGame.API.Data.EventInfo.Hit;
 using AICodingGame.API.Data.EventInfo.Scanner;
 using AICodingGame.API.GameObjects;
-using System.Collections;
 using UnityEngine;
 
 namespace AICodingGame.API
@@ -12,21 +12,21 @@ namespace AICodingGame.API
     /// </summary>
     public abstract class BasicRobot : Robot
     {
+        public GameObject BulletPrefab;
         private RobotGun _robotGun;
         private RobotScanner _scanner;
-        public GameObject BulletPrefab;
 
         private void Awake()
         {
             gameObject.AddComponent(typeof(RobotStackFSM));
             _fsm = gameObject.GetComponent<RobotStackFSM>();
 
-            RobotStackFSM.RobotTask task = new RobotStackFSM.RobotTask
+            var task = new RobotStackFSM.RobotTask
             {
                 Work = _Run
             };
-            task.Parameters = new object[]{ task };
-            
+            task.Parameters = new object[] { task };
+
             _fsm.PushAction(task);
             _rigidBody2d = GetComponent<Rigidbody2D>();
         }

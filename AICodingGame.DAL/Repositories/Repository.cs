@@ -2,7 +2,7 @@
 
 namespace AICodingGame.DAL.Repositories;
 
-public abstract class Repository<TEntity>: IRepository<TEntity> where TEntity: class
+public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {
     protected DbContext _context;
     protected DbSet<TEntity> _dbSet;
@@ -13,17 +13,26 @@ public abstract class Repository<TEntity>: IRepository<TEntity> where TEntity: c
         _dbSet = _context.Set<TEntity>();
     }
 
-    public virtual void Add(TEntity entity)
+    public async void Add(TEntity entity)
     {
         _dbSet.Add(entity!);
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 
-    public virtual TEntity? GetById(int id) => _dbSet.Find(id);
+    public virtual TEntity? GetById(int id)
+    {
+        return _dbSet.Find(id);
+    }
 
-    public virtual IEnumerable<TEntity>? Get() => _dbSet.AsNoTracking().ToList();
+    public virtual IEnumerable<TEntity>? Get()
+    {
+        return _dbSet.AsNoTracking().ToList();
+    }
 
-    public virtual IEnumerable<TEntity>? Get(Func<TEntity, bool> predicate) => Get()?.Where(predicate).ToList();
+    public virtual IEnumerable<TEntity>? Get(Func<TEntity, bool> predicate)
+    {
+        return Get()?.Where(predicate).ToList();
+    }
 
     public virtual void Remove(TEntity entity)
     {
@@ -31,9 +40,9 @@ public abstract class Repository<TEntity>: IRepository<TEntity> where TEntity: c
         _context.SaveChanges();
     }
 
-    public virtual void Update(TEntity entity)
+    public virtual async void Update(TEntity entity)
     {
         _context.Entry(entity).State = EntityState.Modified;
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
     }
 }

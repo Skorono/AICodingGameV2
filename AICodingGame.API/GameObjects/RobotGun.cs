@@ -1,29 +1,28 @@
-using System;
 using System.Collections;
-using System.ComponentModel.DataAnnotations;
-using UnityEngine;
 
 namespace AICodingGame.API.GameObjects
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public class RobotGun: Rotator2D
+    public class RobotGun : Rotator2D
     {
+        public enum FirePower
+        {
+            Min = 1,
+            Medium,
+            High
+        }
+
+        public const float MaxGunTemputure = 30;
+
+        private bool _gunIsCooling;
+
         public GameObject BulletPrefab { get; set; }
 
-        private bool _gunIsCooling = false;
-
-        private float _temperature;
-
-        public float CurrentTemperature => _temperature;         
-        
-        public const float MaxGunTemputure = 30;
+        public float CurrentTemperature { get; private set; }
 
         private void Update()
         {
-            if (_gunIsCooling != true)
-            {
-                StartCoroutine(GunCooling());
-            }
+            if (_gunIsCooling != true) StartCoroutine(GunCooling());
         }
 
         private void Start()
@@ -32,20 +31,13 @@ namespace AICodingGame.API.GameObjects
             StartCoroutine(GunCooling());
         }
 
-        public enum FirePower
-        {
-            Min = 1,
-            Medium,
-            High 
-        }
-
         public void Fire(FirePower firePower)
         {
-            if (_temperature < MaxGunTemputure)
+            if (CurrentTemperature < MaxGunTemputure)
             {
                 Instantiate(BulletPrefab, transform.Find("BulletSpawner").position, transform.rotation)
                     .GetComponent<Rigidbody2D>().AddForce(transform.up * (float)firePower, ForceMode2D.Impulse);
-                _temperature += (float)firePower / 3;
+                CurrentTemperature += (float)firePower / 3;
             }
             else
             {
@@ -57,9 +49,9 @@ namespace AICodingGame.API.GameObjects
         private IEnumerator GunCooling()
         {
             _gunIsCooling = true;
-            
-            if (_temperature > 0)
-                _temperature -= .01f;
+
+            if (CurrentTemperature > 0)
+                CurrentTemperature -= .01f;
 
             _gunIsCooling = false;
             yield return null;

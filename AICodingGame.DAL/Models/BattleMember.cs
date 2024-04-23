@@ -10,11 +10,9 @@ public class BattleMember
     public int BattleId { get; set; }
     public int RobotId { get; set; }
 
-    [ForeignKey("RobotId")]
-    public virtual Robot Robot { get; set; } = new();
+    [ForeignKey("RobotId")] public virtual Robot Robot { get; set; } = new();
 
-    [ForeignKey("BattleId")]
-    public virtual Battle Battle { get; set; } = new();
-    
+    [ForeignKey("BattleId")] public virtual Battle Battle { get; set; } = new();
+
     public virtual MemberBattleStatistic Statistic { get; set; }
 }
