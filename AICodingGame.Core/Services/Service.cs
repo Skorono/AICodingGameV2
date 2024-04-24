@@ -28,7 +28,14 @@ public abstract class Service<TRepository, TEntity> where TRepository : IReposit
 
     public virtual async void Add(TEntity entity)
     {
-        Repository.Add(entity);
+        try
+        {
+            Repository.Add(entity);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
     }
 
     public virtual void Update(TEntity entity)

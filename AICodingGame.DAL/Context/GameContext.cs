@@ -12,7 +12,6 @@ public class GameContext : DbContext
 
     public virtual DbSet<Battle> Battles { get; set; }
     public virtual DbSet<Robot> Robots { get; set; }
-    public virtual DbSet<Statistic> Statistics { get; set; }
     public virtual DbSet<BattleMember> BattleMembers { get; set; }
     public virtual DbSet<BattleStatus> BattleStatuses { get; set; }
     public virtual DbSet<MemberBattleStatistic> BattleStatistics { get; set; }

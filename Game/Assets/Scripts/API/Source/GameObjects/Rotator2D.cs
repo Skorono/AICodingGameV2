@@ -40,7 +40,7 @@ namespace AICodingGame.API.GameObjects
         {
             var step = RotationSpeed * Time.deltaTime;
 
-            if (isRotate && _rigidBody2d.rotation != (float)objects[0])
+            if (isRotate && Math.Abs(_rigidBody2d.rotation - (float)objects[0]) <= 0.1f)
             {
                 _rigidBody2d.MoveRotation(_rigidBody2d.rotation + step);
             }

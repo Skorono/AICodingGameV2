@@ -12,7 +12,7 @@ class RobotForm(forms.Form):
         max_length=100
     )
     
-    path = forms.FilePathField(
+    filesPath = forms.FilePathField(
         path = '/',
         required = True,
         label='Select a folder',
@@ -21,15 +21,18 @@ class RobotForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'type': 'file',
-                'webkitdirectory': True
+                "id": "folder-input",
+                "webkitdirectory directory multiple onchange": "handleFolderChange(event)"
             }
         )
     )
+    
+    folderPath = forms.CharField(widget=forms.HiddenInput())
 
     def __init__(self, *args, **kwargs):
         super(RobotForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update({'class': 'form-control'})
         self.fields['image'].widget.attrs.update({'id': 'image-input', 'class': 'form-control'})
-        self.fields['path'].widget.attrs.update({'class': 'form-control'})
+        self.fields['filesPath'].widget.attrs.update({'class': 'form-control'})
         
         

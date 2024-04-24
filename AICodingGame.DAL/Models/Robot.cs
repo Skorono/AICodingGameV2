@@ -1,4 +1,6 @@
-﻿namespace AICodingGame.DAL.Models;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace AICodingGame.DAL.Models;
 
 public class Robot
 {
@@ -12,6 +14,6 @@ public class Robot
     public byte[]? Image { get; set; }
     public string ProjectPath { get; set; } = null!;
     public DateOnly LastUpdated { get; set; }
-    public virtual Statistic Statistic { get; set; }
-    public virtual ICollection<BattleMember> BattleMembers { get; set; }
+    [NotMapped] public virtual Statistic? Statistic { get; set; }
+    public virtual ICollection<BattleMember>? BattleMembers { get; set; }
 }

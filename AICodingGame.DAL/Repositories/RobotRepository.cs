@@ -19,9 +19,8 @@ public class RobotRepository : Repository<Robot>, IRobotRepository
     public override IEnumerable<Robot>? Get()
     {
         return _dbSet
-            .Include(r => r.Statistic)
             .Include(r => r.BattleMembers)
-            .ThenInclude(m => m.Statistic)
+                .ThenInclude(m => m.Statistic)
             .AsNoTracking()
             .ToList();
     }

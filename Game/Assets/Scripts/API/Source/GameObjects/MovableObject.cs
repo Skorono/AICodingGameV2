@@ -45,7 +45,7 @@ namespace API.Source.GameObjects
             var direction = (int)parameters[2];
 
             if (IsMoving &&
-                _rigidBody2d.position != targetPosition)
+                Vector2.Distance(_rigidBody2d.position, targetPosition) <= 0.1f)
             {
                 _rigidBody2d.velocity = Vector2.up * (direction * (speed * Time.deltaTime));
                 //_rigidBody2d.angularVelocity = 0;

@@ -48,24 +48,33 @@ public class RobotController : ControllerBase
     }
 
     [HttpPost("add")]
-    public async void Add(RobotDto robotDto)
+    public async Task<IActionResult> Add(RobotDto robotDto)
     {
-        Robot robot = robotDto.RobotDtoToModel();
-        _logger.LogInformation($"adding robot {JsonSerializer.Serialize(robotDto)}");
-        await Task.Run(() => _service.Add(robot));
+        try
+        {
+            Robot robot = robotDto.RobotDtoToModel();
+            _logger.LogInformation($"Adding robot {JsonSerializer.Serialize(robotDto)}");
+            await Task.Run(() => _service.Add(robot));
+            return Ok("Robot added successfully.");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error adding robot");
+            return BadRequest("Error adding robot.");
+        }
     }
 
     [HttpPost("update")]
-    public async void Update(RobotDto robot)
+    public async Task Update(RobotDto robot)
     {
-        _logger.LogInformation($"updating robot {robot.ToString()}");
+        _logger.LogInformation($"Updating robot {robot.ToString()}");
         await Task.Run(() => _service.Update(robot.RobotDtoToModel()));
     }
 
     [HttpDelete("delete")]
-    public async void Delete(RobotDto robot)
+    public async Task Delete(RobotDto robot)
     {
-        _logger.LogInformation($"deleting robot {robot.ToString()}");
+        _logger.LogInformation($"Deleting robot {robot.ToString()}");
         await Task.Run(() => _service.Remove(robot.RobotDtoToModel()));
     }
 }

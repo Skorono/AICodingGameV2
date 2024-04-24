@@ -64,26 +64,7 @@ namespace AICodingGame.DAL.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Statistics",
-                columns: table => new
-                {
-                    RobotId = table.Column<int>(type: "integer", nullable: false),
-                    WinnerPercent = table.Column<float>(type: "real", nullable: false),
-                    KillDeathPercent = table.Column<float>(type: "real", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Statistics", x => x.RobotId);
-                    table.ForeignKey(
-                        name: "FK_Statistics_Robots_RobotId",
-                        column: x => x.RobotId,
-                        principalTable: "Robots",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
+            
             migrationBuilder.CreateTable(
                 name: "BattleMembers",
                 columns: table => new
@@ -114,7 +95,6 @@ namespace AICodingGame.DAL.Migrations
                 name: "BattleStatistics",
                 columns: table => new
                 {
-                    BattleId = table.Column<int>(type: "integer", nullable: false),
                     MemberId = table.Column<int>(type: "integer", nullable: false),
                     AccuracyPercent = table.Column<float>(type: "real", nullable: false),
                     Kills = table.Column<int>(type: "integer", nullable: false),
@@ -122,17 +102,11 @@ namespace AICodingGame.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BattleStatistics", x => new { x.BattleId, x.MemberId });
+                    table.PrimaryKey("PK_BattleStatistics", x => new { x.MemberId });
                     table.ForeignKey(
                         name: "FK_BattleStatistics_BattleMembers_MemberId",
                         column: x => x.MemberId,
                         principalTable: "BattleMembers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BattleStatistics_Battles_BattleId",
-                        column: x => x.BattleId,
-                        principalTable: "Battles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });

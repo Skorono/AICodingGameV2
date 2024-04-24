@@ -11,9 +11,10 @@ public static class RobotConvertationHelper
         {
             Name = robotDto.Name,
             Image = robotDto.Image.StringToByteArray(),
+            ProjectPath = robotDto.ProjectPath,
             LastUpdated = DateOnly.FromDateTime(robotDto.LastUpdated),
-            BattleMembers = new List<BattleMember>(),
-            Statistic = new()
+            BattleMembers = null,
+            Statistic = null
         };
     }
 }

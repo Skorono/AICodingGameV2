@@ -54,6 +54,12 @@
                     img.src = '';
                 }
             });
+
+            function handleFolderChange(event) {
+                var files = event.target.files;
+                var folderPath = files[0].webkitRelativePath.split('/')[0];
+                document.getElementById('folder-form').folderPath.value = folderPath;
+            }
         </script>
     </div>
 {% endblock %}

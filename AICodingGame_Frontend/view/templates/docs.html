@@ -1,5 +1,148 @@
 {% extends 'index.html' %}
 
 {% block content %}
-    <p>Тут отображена документация проекта</p>
-{% endblock %}
+<li class="blockList">
+    <table class="table table-bordered typeSummary">
+        <caption><span>Классы</span><span class="tabEnd">&nbsp;</span></caption>
+        <thead>
+        <tr>
+            <th class="colFirst">Класс</th>
+            <th class="colLast">Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/_AdvancedRadiansRobot.html" title="класс в robocode">_AdvancedRadiansRobot</a></td>
+            <td class="colLast">
+                <div class="block">Используется системой в качестве замены для всех вызовов *Radians в
+                    <a href="../robocode/AdvancedRobot.html" title="класс в robocode"><code>AdvancedRobot</code></a>.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/_AdvancedRobot.html" title="класс в robocode">_AdvancedRobot</a></td>
+            <td class="colLast">
+                <div class="block">Используется системой, а также является заменой для всех устаревших
+                    вызовов для <a href="../robocode/AdvancedRobot.html" title="класс в robocode"><code>AdvancedRobot</code></a>.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/_Robot.html" title="класс в robocode">_Robot</a></td>
+            <td class="colLast">
+                <div class="block">Используется системой, а также является заменой для всех устаревших
+                    вызовов для <a href="../robocode/Robot.html" title="класс в robocode"><code>Robot</code></a>.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/_RobotBase.html" title="класс в robocode">_RobotBase</a></td>
+            <td class="colLast">
+                <div class="block">Базовый класс всех роботов, используемых системой.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/AdvancedRobot.html" title="класс в robocode">AdvancedRobot</a></td>
+            <td class="colLast">
+                <div class="block">Более продвинутый тип робота, чем <code>Robot</code>, который позволяет выполнять неблокирующие вызовы, создавать пользовательские события и записывать данные в файловую систему.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/BattleEndedEvent.html" title="класс в robocode">BattleEndedEvent</a></td>
+            <td class="colLast">
+                <div class="block">Отправляется в <a href="../robocode/Robot.html#onBattleEnded-robocode.BattleEndedEvent-"><code>onBattleEnded()</code></a> когда битва закончена.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/BattleResults.html" title="класс в robocode">BattleResults</a></td>
+            <td class="colLast">
+                <div class="block">Содержит результаты битвы, возвращаемые <a href="../robocode/BattleEndedEvent.html#getResults--"><code>BattleEndedEvent.getResults()</code></a> когда битва закончена.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/BattleRules.html" title="класс в robocode">BattleRules</a></td>
+            <td class="colLast">
+                <div class="block">Содержит правила битвы, возвращаемые <a href="../robocode/control/events/BattleStartedEvent.html#getBattleRules--"><code>BattleStartedEvent.getBattleRules()</code></a> когда битва начинается и
+                    <a href="../robocode/control/events/BattleCompletedEvent.html#getBattleRules--"><code>BattleCompletedEvent.getBattleRules()</code></a>
+                    когда битва завершена.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/Bullet.html" title="класс в robocode">Bullet</a></td>
+            <td class="colLast">
+                <div class="block">Представляет пулю.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/BulletHitBulletEvent.html" title="класс в robocode">BulletHitBulletEvent</a></td>
+            <td class="colLast">
+                <div class="block">Это событие отправляется в <a href="../robocode/Robot.html#onBulletHitBullet-robocode.BulletHitBulletEvent-"><code>onBulletHitBullet</code></a> когда пуля одного из ваших роботов попадает в другую пулю.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/BulletHitEvent.html" title="класс в robocode">BulletHitEvent</a></td>
+            <td class="colLast">
+                <a class="block">Это событие отправляется в  <code>onBulletHit()</code> когда пуля одного из ваших роботов попадает в другого робота.</div>
+</td>
+</tr>
+<tr class="rowColor">
+                    <td class="colFirst"><a href="../robocode/BulletMissedEvent.html" title="класс в robocode">BulletMissedEvent</a></td>
+                    <td class="colLast">
+                        <div class="block">Это событие отправляется в <a href="../robocode/Robot.html#onBulletMissed-robocode.BulletMissedEvent-"><code>onBulletMissed()</code></a> когда пуля одного из ваших роботов промахивается, т.е. когда пуля достигает границы поля боя.</div>
+                    </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/Condition.html" title="класс в robocode">Condition</a></td>
+            <td class="colLast">
+                <div class="block">Используется для определения пользовательских условий с помощью <a href="../robocode/AdvancedRobot.html#waitFor-robocode.Condition-"><code>waitFor(Condition)</code></a> и пользовательских событий для <a href="../robocode/AdvancedRobot.html" title="класс в robocode"><code>AdvancedRobot</code></a>.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/CustomEvent.html" title="класс в robocode">CustomEvent</a></td>
+            <td class="colLast">
+                <div class="block">Это событие отправляется в <a href="../robocode/AdvancedRobot.html#onCustomEvent-robocode.CustomEvent-"><code>onCustomEvent()</code></a> когда пользовательское условие выполнено.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/DeathEvent.html" title="класс в robocode">DeathEvent</a></td>
+            <td class="colLast">
+                <div class="block">Это событие отправляется в <a href="../robocode/Robot.html#onDeath-robocode.DeathEvent-"><code>onDeath()</code></a> когда ваш робот умирает.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/Event.html" title="класс в robocode">Event</a></td>
+            <td class="colLast">
+                <div class="block">Суперкласс всех событий Robocode.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/GunTurnCompleteCondition.html" title="класс в robocode">GunTurnCompleteCondition</a></td>
+            <td class="colLast">
+                <div class="block">Предварительно построенное условие, которое вы можете использовать, указывающее, что орудие закончило поворот.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/HitByBulletEvent.html" title="класс в robocode">HitByBulletEvent</a></td>
+            <td class="colLast">
+                <div class="block">Это событие отправляется в <a href="../robocode/Robot.html#onHitByBullet-robocode.HitByBulletEvent-"><code>onHitByBullet()</code></a> когда ваш робот поражен пулей.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/Robot.html#onHitRobot-robocode.HitRobotEvent-"><code>onHitRobot()</code></a></td>
+            <td class="colLast">
+                <div class="block">Это событие отправляется в когда ваш робот сталкивается с другим роботом.</div>
+            </td>
+        </tr>
+        <tr class="rowColor">
+            <td class="colFirst"><a href="../robocode/HitWallEvent.html" title="класс в robocode">HitWallEvent</a></td>
+            <td class="colLast">
+                <div class="block">Это событие отправляется в <a href="../robocode/Robot.html#onHitWall-robocode.HitWallEvent-"><code>onHitWall()</code></a> когда вы сталкиваетесь со стеной.</div>
+            </td>
+        </tr>
+        <tr class="altColor">
+            <td class="colFirst"><a href="../robocode/JuniorRobot.html" title="класс в robocode">JuniorRobot</a></td>
+            <td class="colLast">
+                <div class="block">Это самый простой тип робота, который проще, чем <code>Robot</code> и
+                    <a href="../robocode/AdvancedRobot.html" title="класс в robocode"><code>AdvancedRobot</code></a> классов.</div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {% endblock %}
