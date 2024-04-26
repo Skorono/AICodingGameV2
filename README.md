@@ -7,9 +7,9 @@
 
 ![image](https://github.com/Skorono/AICodingGameV2/assets/58297559/736fdedc-70fc-4906-9087-759285ab2aad)
 
-![image](https://github.com/Skorono/AICodingGameV2/assets/58297559/c84fb0c8-9091-4898-954e-88092a38e59d)
-
 ![image](https://github.com/Skorono/AICodingGameV2/assets/58297559/aaf000ef-1da2-483f-b612-a1ec69606a10)
+
+![image](https://github.com/Skorono/AICodingGameV2/assets/58297559/c84fb0c8-9091-4898-954e-88092a38e59d)
 
 ![image](https://github.com/Skorono/AICodingGameV2/assets/58297559/334ce41b-0269-44d4-9fad-da09cbfdbadc)
 
